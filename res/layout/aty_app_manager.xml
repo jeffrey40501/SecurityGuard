@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/ma_appmanager"
+        android:textColor="#AAAAAA"
+        android:textSize="23sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_avail_mem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ma_available_memory_"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_avail_sdcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ma_available_sdcard"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/ll_manager_load"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AAAAAA"
+                android:text="@string/ma_loading_app_information_" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_appmanager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

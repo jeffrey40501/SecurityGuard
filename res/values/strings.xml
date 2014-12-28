@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- the name of sharedpreferenced.strings below should not be altered! -->
+    <string name="sp_config">com.beiluoshimen.securityguard.config</string>
+    <string name="sp_autoupdate">autoupdate</string>
+    <string name="sp_password">password</string>
+    <string name="sp_sim_protect_on">sim_protect_on</string>
+    <string name="sp_simserial">simserial</string>
+    <string name="sp_safenumber">safenumber</string>
+    <string name="sp_remote_wipe_out">remote_wipe_out</string>
+    
+    <string name="title">Security Guard</string>
+    <string name="app_name">SecurityGuard</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_title">Security Guard</string>
+    <string name="main_func1">Protect Thief</string>
+    <string name="main_func2">Telephone guard</string>
+    <string name="main_func3">Software manager</string>
+    <string name="main_func4">Activity manager</string>
+    <string name="main_func5">Flow manager</string>
+    <string name="main_func6">Virus Detect</string>
+    <string name="main_func7">System Boost</string>
+    <string name="main_func8">Advanced tools</string>
+    <string name="main_func9">Settings</string>
+
+    <!-- The string is used in settings module.... -->
+    <string name="aty_settings_title">Settings</string>
+    <string name="aty_settings_tv_auto_update">Auto Update</string>
+    <string name="aty_settings_autoupdate_status">The auto-update is turned off.</string>
+    <string name="aty_settings_autoupdate_is_on">Autoupdate has been turned on.</string>
+    <string name="aty_settings_autoupdate_is_off">Autoupdate has been turned off.</string>
+
+    <!-- The string is used in anti theft module.... -->
+    <string name="at_set_password">Set Password</string>
+    <string name="at_please_enter_pass_word">Please input your password.</string>
+    <string name="at_please_enter_the_password_again">Please reenter your password.</string>
+    <string name="at_confirm">Confirm</string>
+    <string name="at_cancel">Cancel</string>
+    <string name="at_please_enter_your_password">Please enter your password.</string>
+    <string name="at_the_password_can_t_be_empty">The password can\'t be empty.</string>
+    <string name="at_password_is_set_successfully">Password is set successfully.</string>
+    <string name="at_correct_password_">Correct Password!</string>
+    <string name="at_the_password_is_wrong_">The password is wrong.</string>
+    <string name="at_both_password_aren_t_the_same_">Both password aren\'t the same.</string>
+    
+    <!-- setup guide -->
+    <string name="at_anti_theft_setup_">Anti-theft setup</string>
+    <string name="at_this_setup_will_guide_you_through_the_following_settings_">This setup will guide you through the following settings -></string>
+    <string name="at_sim_card_changed_alert">SIM card changed alert</string>
+    <string name="at_gps_taget">Find back your phone</string>
+    <string name="at_remote_data_destroy">Remote data destroy</string>
+    <string name="at_remote_lock_screen">Remote lock screen</string>
+    <string name="at_sim_card_lock">SIM Card Lock</string>
+    <string name="at_simcardchange">Once the sim card has been changed, the cell phone will auto-send alert text message to safety number.</string>
+    <string name="at_clock_to_lock_the_sim_card_">Click to lock the SIM card.</string>
+    <string name="at_input_the_number_here_">Input the number here...</string>
+    <string name="at_select_from_contacts_">Select from Contacts.</string>
+    <string name="at_congraduation_">Data Wipe-out</string>
+    <string name="at_recommend_turn_on_wipe_out">We advise you to turn on the wipe-out function. You can wipe out all your data remotely by sending SMS message to this cellphone.\n\n Message should contains :\nYour password</string>
+    <string name="at_set_safe_cellphone_number_">Safety Number</string>
+    <string name="at_once_the_sim_card_has_changed">Once the SIM card has been changed, the cellphone will send message to this number.</string>
+    <string name="at_resetup">Re-setup</string>
+    <string name="at_off">Off</string>
+    <string name="at_remote_data_wipe_out_is_">Remote data wipe out :</string>
+    <string name="at_your_safe_number_is_">Safe number :</string>
+    <string name="at_anti_theft">Anti-theft</string>
+    <string name="at_this_safe_number_is_empty">This safe number is empty</string>
+    <string name="at_the_safe_number_set_successfully_">The safe number set successfully.</string>
+    <string name="at_remote_wipe_out_is_on_">Remote wipe out is on.</string>
+    <string name="at_remote_wipe_out_is_off_">Remote wipe out is off.</string>
+    <string name="at_choose_the_contact">Choose the contact</string>
+    <string name="at_sim_card_lock_is_">Sim card lock :</string>
+    <string name="at_on">On</string>
+    <string name="lock_loading_app_information_">Loading app information...</string>
+    <string name="lock_app_lock">App Lock</string>
+    <string name="lock_app_name">App name :</string>
+    <string name="lock_enter_password_here_">Enter password here.</string>
+    <string name="lock_submit">Submit</string>
+    <string name="lock_turn_on_app_lock">Turn on App lock</string>
+    <string name="lock_auto_turn_on_once_boot">Auto turn on once phone start</string>
+    <string name="sp_lock_on">lock_on</string>
+    <string name="sp_auto_lock_on">auto_lock_on</string>
+    <string name="ma_appmanager">AppManager</string>
+    <string name="ma_available_memory_">Available Memory:</string>
+    <string name="ma_available_sdcard">Available sdcard:</string>
+    <string name="ma_loading_app_information_">Loading app information...</string>
+    <string name="manager_no_sdcard">No sdcard</string>
+    <string name="popup_uninstall">Uninstall</string>
+    <string name="popup_start">Start</string>
+    <string name="popup_upshare">Share</string>
+    <string name="ma_share">Share</string>
+    <string name="ma_recommend_you_one_app_">"Recommend you one app: "</string>
+    <string name="ma_the_app_can_t_be_start_">The app can\'t be start.</string>
+    <string name="tm_taskmanager">TaskManager</string>
+    <string name="tm_system_process">System Process</string>
+    <string name="tm_user_process">User Process</string>
+    <string name="tm_click_all_">Select all</string>
+    <string name="tm_clean">Clean</string>
+    <string name="tm_memory_">"Memory: "</string>
+    <string name="at_not_yet_set">Not yet set</string>
+    <string name="at_enter_password">Enter Password</string>
+    <string name="title_app_manager">App Manager</string>
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
+    <string name="title_market">Market</string>
+    
+    <string name="titile_anti_theft">Anti-theft</string>
+    <string name="title_app_lock">App Lock</string>
+    <string name="titile_task_manager">Task Manager</string>
+    <string name="lock_you">You have to setup your password to use this function.</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_secure_niang">アクセル娘</string>
+    <string name="market_market">Market</string>
+    <string name="market_loading_">Loading...</string>
+    <string name="popup_market_buy">Buy</string>
+    <string name="popup_market_download">Download</string>
+
+</resources>

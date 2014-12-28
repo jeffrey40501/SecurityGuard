@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#222222"
+     >
+    
+	<TextView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:text="@string/aty_settings_title"
+	    android:textColor="#AAAAAA"
+	    android:textStyle="bold"
+	    android:textSize="28sp"/>
+	
+	<RelativeLayout 
+	    android:layout_marginTop="10dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	    <TextView 
+	        android:id="@+id/tv_autoupdate_title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/aty_settings_tv_auto_update"
+	        android:textSize="24sp"
+	        android:textStyle="bold"
+	        android:textColor="#AAAAAA"/>
+	    
+	    <TextView 
+	        android:id="@+id/tv_setting_autoupdate"
+	        android:textColor="#AAAAAA"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/tv_autoupdate_title"
+	        android:text="@string/aty_settings_autoupdate_status"
+	        />
+	    <CheckBox 
+	        android:id="@+id/cb_settings_autoupdate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:checked="false"/>
+	</RelativeLayout>
+</LinearLayout>

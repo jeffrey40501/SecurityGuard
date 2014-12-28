@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/z01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/at_anti_theft"
+        android:textColor="#AAAAAA"
+        android:textSize="23sp" />
+
+    <LinearLayout
+        android:id="@+id/z02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/z01"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/at_your_safe_number_is_"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_safe_num"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:text="@string/at_not_yet_set"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/z03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/z02" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+            
+            android:paddingTop="10dp"
+            android:text="@string/at_remote_data_wipe_out_is_"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_remote_wipe_out"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:text="@string/at_off"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/z04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/z03" >
+
+        <TextView
+            android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+            
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/at_sim_card_lock_is_"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_sim_card"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:text="@string/at_off"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+    </LinearLayout>
+	<ImageView 
+	    android:layout_centerInParent="true"
+	    android:layout_marginTop="50dp"
+	    
+	    android:layout_below="@id/z04"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/anti"/>
+    
+    <Button
+        android:id="@+id/btn_resetup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:paddingTop="10dp"
+        android:text="@string/at_resetup" />
+
+</RelativeLayout>

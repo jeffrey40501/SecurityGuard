@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <!-- title -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/cellphone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:text="@string/at_set_safe_cellphone_number_"
+            android:textColor="#AAAAAA"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+        android:textColor="#AAAAAA"
+        android:text="@string/at_once_the_sim_card_has_changed" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- ImageView can be inserted here -->
+
+        <EditText
+            android:id="@+id/etTextSafeNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="#AAAAAA"
+            android:hint="@string/at_input_the_number_here_"
+            android:inputType="phone" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btnSelectContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/at_select_from_contacts_" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/phone" />
+
+      <Button
+            android:id="@+id/btnPrev3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="#222222"
+            android:drawableRight="@drawable/next_pre2" />
+
+        <Button
+            android:id="@+id/btnNext3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#222222"
+            android:drawableRight="@drawable/next_step2" />
+
+    </RelativeLayout>
+
+</LinearLayout>

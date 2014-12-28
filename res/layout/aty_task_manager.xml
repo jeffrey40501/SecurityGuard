@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#222222" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#AAAAAA"
+        android:textSize="24sp"
+        android:text="@string/tm_taskmanager" />
+	<LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/tm_user_process"
+            android:textColor="#AAAAAA"
+            android:layout_marginRight="30dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_marginLeft="30dp"
+                        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/tm_system_process"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_marginRight="50dp"
+            android:id="@+id/btn_user"
+            
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_process"
+            android:gravity="center_horizontal"
+            android:textColor="#AAAAAA"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_system"
+            android:layout_marginLeft="50dp"
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/system_process"
+            android:gravity="center_horizontal"
+            android:textColor="#AAAAAA"
+            android:textSize="18sp" />
+    </LinearLayout>
+    
+
+    <LinearLayout 
+        android:visibility="visible"
+        android:id="@+id/ll_tm_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+       android:orientation="vertical"
+       android:gravity="center">
+        <ProgressBar 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+       
+    </LinearLayout> 
+   <RelativeLayout
+       android:visibility="invisible"
+        android:id="@+id/rl_tm_ui"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ListView
+            android:id="@+id/lv_usertask"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="30dip" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/lv_systemtask"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="30dip"
+            android:visibility="gone" >
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_tm_select_all"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/tm_click_all_"
+                android:textColor="#AAAAAA"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_tm_kill"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/tm_clean"
+                android:textColor="#AAAAAA"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#222222" >
+
+    
+    <ImageView
+        android:id="@+id/iv_market_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_market_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_market_icon"
+        android:singleLine="true"
+        android:text="name"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_market_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="28sp"
+        android:layout_toRightOf="@id/iv_market_icon"
+        android:singleLine="true"
+        android:text="price"
+        android:textColor="#888888"
+        android:textSize="14sp" />
+  <!--   
+    <Button
+        android:id="@id/btn_market_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        android:textColor="#888888"
+	android:layout_toRightOf="@id/tv_market_name"
+        android:textSize="14sp" />
+    <Button
+        android:id="@id/btn_market_dl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download"
+        android:textColor="#888888"
+        android:layout_toRightOf="@id/btn_market_buy"
+        android:textSize="14sp" />
+     -->
+
+</RelativeLayout>

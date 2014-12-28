@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_popup_market_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#222222"
+    android:orientation="horizontal"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="1dp"
+    
+    android:paddingTop="5dp" >
+    
+
+    <LinearLayout
+        android:id="@+id/ll_popup_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/burn_file" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popup_market_buy"
+            android:textColor="#AAAAAA" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="1dp"
+        android:id="@+id/ll_popup_dl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:paddingTop="3dp"
+            android:src="@drawable/open" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popup_market_download"
+            android:paddingTop="1dp"
+            android:textColor="#AAAAAA" />
+    </LinearLayout>
+
+
+</LinearLayout>

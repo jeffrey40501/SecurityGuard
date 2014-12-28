@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/at_set_password"
+        android:textColor="#AAAAAA"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/et_dialog_first_pwd"
+        android:layout_width="fill_parent"
+        android:textColor="#AAAAAA"
+        android:layout_height="wrap_content"
+        android:hint="@string/at_please_enter_pass_word"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_dialog_first_pwd_confirm"
+        android:layout_width="fill_parent"
+         android:textColor="#AAAAAA"
+        android:layout_height="wrap_content"
+        android:hint="@string/at_please_enter_the_password_again"
+        android:inputType="textPassword" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/btn_dialog_first_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            android:src="@drawable/click_yes"
+            android:text="@string/at_confirm" />
+        <!--
+             <Button 
+	        android:layout_width="wrap_content"
+	        android:layout_weight="1"
+	        
+	        android:layout_height="wrap_content"
+	        android:id="@+id/btn_dialog_first_confirm"
+	        android:text="@string/at_confirm"/>
+        -->
+
+        <ImageButton
+            android:id="@+id/btn_dialog_first_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            android:src="@drawable/ckick_no"
+            android:text="@string/at_cancel" />
+
+        <!--
+     	    <Button 
+	        android:layout_width="wrap_content"
+	        android:layout_weight="1"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/btn_dialog_first_cancel"
+	        android:text="@string/at_cancel"/>
+        -->
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#222222" >
+
+    <!-- tm = taskmanager -->
+
+    <ImageView
+        android:id="@+id/iv_tm_icon"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_tm_appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_tm_icon"
+        android:singleLine="true"
+        android:text="Name"
+        android:textColor="#AAAAAA"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/tv_taskmanager_mem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tm_appname"
+        android:layout_marginTop="8dip"
+        android:layout_toRightOf="@id/iv_tm_icon"
+        android:text="@string/tm_memory_"
+        android:textColor="#AAAAAA"
+        android:textSize="14sp" />
+
+    <CheckBox
+        
+        android:id="@+id/cb_taskmanager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="14dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:textColor="#AAAAAA" />
+
+</RelativeLayout>

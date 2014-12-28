@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.0"
+        package="com.beiluoshimen.securityguard"
+     >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="21" />
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+            <activity
+            android:name=".AtySplash"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".moe.MoeApplication"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
+        
+        </activity>
+        
+        <activity android:name=".MainUI"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".settings.AtySettings"
+                        android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".antitheft.AtySetup1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".antitheft.AtyAntitheft"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".antitheft.AtySetup2"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".antitheft.AtySetup3"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".antitheft.AtySetup4"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".antitheft.AtySelectContacts"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".lock.AtyLock"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".appmanager.AtyAppManager"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".taskmanager.AtyTaskManager"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".market.MarketActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            
+        </activity>
+        
+        <!-- we use single instance so once the password is correct , the user won't get directed to our security guard. -->
+        <activity android:name=".lock.PassEnterActivity"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"></activity>
+ 
+        	
+        <receiver android:name=".antitheft.BrBoot" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- get the highest authority , thus we can shut down ,restart,wipe out data on the phone -->
+        <receiver android:name=".antitheft.Admin" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".antitheft.BrSMS" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        
+
+
+        <provider
+            android:name=".lock.AppLockDBProvider"
+            android:authorities="com.beiluoshimen.securityguard"
+            android:exported="false" >
+        </provider>
+        <service android:name=".lock.LockService"></service>
+        <service android:name=".moe.CleanService"></service>
+    </application>
+
+</manifest>

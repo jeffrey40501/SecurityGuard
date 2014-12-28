@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/market_market"
+        android:textColor="#AAAAAA"
+        android:textSize="23sp" />
+	<TextView 
+	    android:id="@+id/tv_market_coin"
+	     android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Not login. Press here to login."
+        android:textColor="#AAAAAA"
+        android:textSize="14sp"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/ll_market_load"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AAAAAA"
+                android:text="@string/market_loading_" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_market"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

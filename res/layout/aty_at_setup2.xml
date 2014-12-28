@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <!-- title -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_horizontal"
+            android:text="@string/at_sim_card_lock"
+            android:textColor="#AAAAAA"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/at_simcardchange"
+        android:textColor="#AAAAAA" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal" >
+
+        <!-- ImageView can be inserted here -->
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:id="@+id/ibLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/unlock" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="2dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/at_clock_to_lock_the_sim_card_"
+            android:textColor="#AAAAAA"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        
+             <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/sim" />
+       
+		
+        <Button
+            android:id="@+id/btnPrev2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="#222222"
+            android:drawableRight="@drawable/next_pre2" />
+
+        <Button
+            android:id="@+id/btnNext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#222222"
+            android:drawableRight="@drawable/next_step2" />
+    </RelativeLayout>
+
+</LinearLayout>

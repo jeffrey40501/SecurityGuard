@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222"
+    android:orientation="vertical" >
+
+    <!-- title -->
+
+    <RelativeLayout
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/setup_body" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content"
+            android:text="@string/at_anti_theft_setup_"
+            android:gravity="center_horizontal"
+            android:textColor="#AAAAAA"
+            android:textSize="22sp" 
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/at_this_setup_will_guide_you_through_the_following_settings_"
+        android:textColor="#AAAAAA" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <!-- ImageView can be inserted here -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+            
+            android:src="@drawable/antitheft" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="2dp"
+            android:text="@string/at_sim_card_changed_alert"
+            android:textColor="#AAAAAA"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <!-- ImageView can be inserted here -->
+
+        <ImageView
+            android:layout_marginLeft="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cellphone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:paddingTop="8dp"
+            android:text="@string/at_gps_taget"
+            android:textColor="#AAAAAA"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp" >
+
+        <!-- ImageView can be inserted here -->
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	                android:layout_marginLeft="11dp"
+	    
+	    android:src="@drawable/burn_file"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+             android:textSize="15sp"
+            android:paddingTop="8dp"
+            android:textColor="#AAAAAA"
+            android:text="@string/at_remote_data_destroy" />
+    </LinearLayout>
+
+   <!--  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        ImageView can be inserted here
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:text="@string/at_remote_lock_screen" />
+    </LinearLayout>
+ -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnNext1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#222222"
+            android:drawableRight="@drawable/next_step2" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/setup1" />
+
+    </RelativeLayout>
+
+</LinearLayout>
