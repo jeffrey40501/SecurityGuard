@@ -39,12 +39,12 @@ public class AtySplash extends Activity{
 		setContentView(R.layout.aty_splash);
 		tv_version = (TextView) findViewById(R.id.tv_splash_veison);
 		tv_version.setText("Version:"+getVersion());
-		
-//		startActivity(new Intent(AtySplash.this, AtySettings.class));
+
+		//test
 		//and we can get the thief cell phone number!.
 //		smsManager.sendTextMessage("0978519680", null,"SIM card has changed.", null, null);
-		//TODO
-		startActivity(new Intent(AtySplash.this, MarketActivity.class));
+		
+		startActivity(new Intent(AtySplash.this, MoeApplication.class));
 		finish();
 	}
 	/**

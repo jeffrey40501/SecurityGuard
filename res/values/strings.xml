@@ -116,5 +116,7 @@
     <string name="market_loading_">Loading...</string>
     <string name="popup_market_buy">Buy</string>
     <string name="popup_market_download">Download</string>
+    <string name="action_author">Author</string>
+
 
 </resources>

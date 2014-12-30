@@ -88,7 +88,13 @@
         <activity android:name=".market.MarketActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
-            
+        </activity> 
+          <activity android:name=".market.AtyLogin"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:name=".market.AtyRegister"
+            android:screenOrientation="portrait"> 
         </activity>
         
         <!-- we use single instance so once the password is correct , the user won't get directed to our security guard. -->

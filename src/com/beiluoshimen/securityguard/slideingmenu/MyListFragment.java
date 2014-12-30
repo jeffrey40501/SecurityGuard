@@ -4,6 +4,7 @@ import com.beiluoshimen.securityguard.R;
 import com.beiluoshimen.securityguard.antitheft.AtyAntitheft;
 import com.beiluoshimen.securityguard.appmanager.AtyAppManager;
 import com.beiluoshimen.securityguard.lock.AtyLock;
+import com.beiluoshimen.securityguard.market.MarketActivity;
 import com.beiluoshimen.securityguard.moe.MoeApplication;
 import com.beiluoshimen.securityguard.taskmanager.AtyTaskManager;
 
@@ -71,11 +72,10 @@ public class MyListFragment extends ListFragment {
 			startActivity(intent);
 			
 			break;
-			
-			
 		case 5:
-			//author
-			Toast.makeText(context, "BeiluoShimen\n beiluo.shimen@icloud.com", Toast.LENGTH_LONG).show();
+			
+			intent = new Intent(getActivity().getApplicationContext(),MarketActivity.class);
+			startActivity(intent);
 			
 			break;
 
@@ -107,7 +107,7 @@ public class MyListFragment extends ListFragment {
 		adapter.add(new MyItem("App Lock", R.drawable.unlock));
 		adapter.add(new MyItem("App Manager", R.drawable.system_process));
 		adapter.add(new MyItem("Memory Clean",R.drawable.boost));
-		adapter.add(new MyItem("Author", R.drawable.open));
+		adapter.add(new MyItem("Market", R.drawable.open));
 		
 		//!!!In ListFragment, we have to use setListAdapter to set the list adapter
 		setListAdapter(adapter);

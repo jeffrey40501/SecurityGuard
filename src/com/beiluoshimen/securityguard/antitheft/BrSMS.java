@@ -46,7 +46,7 @@ public class BrSMS extends BroadcastReceiver{
 				//check if we have the admin authority to wipe out data on devices....
 				if (dpm.isAdminActive(admin)) {
 					//TODO  TEST TEST  wipe out all data
-					dpm.wipeData(0);//reboot the device
+//					dpm.wipeData(0);//reboot the device
 					System.err.println("i have the authority!!!!");
 				}else {
 					System.err.println("no active adimin");

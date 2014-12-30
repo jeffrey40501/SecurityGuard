@@ -1,51 +1,30 @@
 package com.beiluoshimen.securityguard.market;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.zip.ZipFile;
 
 import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
 import retrofit.client.ApacheClient;
 
 import com.beiluoshimen.securityguard.R;
-import com.beiluoshimen.securityguard.lock.AppInfo;
-import com.beiluoshimen.securityguard.lock.AppInfoProvider;
 import com.beiluoshimen.securityguard.slideingmenu.BaseActivity;
 import com.beiluoshimen.securityguard.tools.DensityUtil;
 import com.dk.animation.SwitchAnimationUtil;
 import com.dk.animation.SwitchAnimationUtil.AnimationType;
 
-import android.R.integer;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources.Theme;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StatFs;
-import android.text.format.Formatter;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -54,7 +33,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,13 +48,14 @@ import android.widget.Toast;
  */
 public class MarketActivity extends BaseActivity implements OnClickListener{
 	//Spring 
-	private final String TEST_URL = "https://192.168.200.100:8443";
+	private final static String TEST_URL = "https://192.168.200.100:8443";
 	
 //	private final String TEST_URL = "https://127.0.0.1:8443";
 //	private final String TEST_URL = "https://10.0.2.2:8443";
 	
+
 	
-	private AccountSvcApi accountService = new RestAdapter.Builder()
+    protected static  AccountSvcApi accountService = new RestAdapter.Builder()
 	.setClient(new ApacheClient(UnsafeHttpsClient.createUnsafeClient()))
 	.setEndpoint(TEST_URL).setLogLevel(LogLevel.FULL).build()
 	.create(AccountSvcApi.class);
@@ -95,8 +74,14 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	protected static final String TAG = "MarketActivity";
 	
 	//Handler 
-	private final int LOAD_APP_DONE = 2;
-	private final int LOAD_ONE_PIC = 4;
+	private static final int LOAD_CHARACTERS_SUCCESS = 1;
+	private static final int LOAD_CHARACTERS_FAILURE = 2;
+	private static final int LOAD_USER_DATA_DONE = 3;
+	private static final int LOAD_ONE_PIC = 4;
+	private static final int BUY_CHARACTER_SUCCESS = 5;
+	private static final int BUY_CHARACTER_FAILURE = 6;
+	private static final int BUY_CHARACTER_FAILURE_ALREADY_HAVE = 7;
+	
 	
 	private TextView tv_coin;
 	private ListView lv_chars;
@@ -119,8 +104,14 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	private String clickedName;
 	
 	private boolean isLogin;
+	//result code for login activity.
+	public final int LOGIN_SUCCEED_CODE = 1;
+	public final int LOGIN_FAIL_CODE = 2;
 	
-
+	//user info
+	private String username,password;
+	private Account account;
+	
 	private Drawable loadImageFromURL(String url){
         try{
             InputStream is = (InputStream) new URL(url).getContent();
@@ -166,7 +157,7 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 		
 		//load app
 		ll_load.setVisibility(View.VISIBLE);
-		uiUpdate();
+		loadCharacters();
 		
 		//set Action bar to be not poped up
 		setSlidingActionBarEnabled(false);
@@ -201,38 +192,40 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 
 	}
 	
-	private void dismissPopupWindow() {
-		if (popupWindow != null && popupWindow.isShowing()) {
-			popupWindow.dismiss();
-			popupWindow = null;
-		}
-	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ll_popup_buy:
 			Log.i(TAG, "buy");
-			buyCharacter();
+			if(!isLogin){
+				Intent login = new Intent(MarketActivity.this,AtyLogin.class);
+				startActivityForResult(login,0);
+			}else {
+				dismissPopupWindow();
+				showBuyCharacterDialog();	
+			}
 			break;
 		case R.id.ll_popup_dl:
 			Log.i(TAG, "dl");
-			dlCharacter();
+			if(!isLogin){
+				Intent login = new Intent(MarketActivity.this,AtyLogin.class);
+				startActivityForResult(login,0);
+			}else {
+				dismissPopupWindow();
+				//TODO show downloading...
+				dlCharacter();
+			}
 			break;
 		case R.id.tv_market_coin:
-			//TODO login here 
-			//remeber to update the coin tv to show.
+			if(!isLogin){
+			Intent login = new Intent(MarketActivity.this,AtyLogin.class);
+			startActivityForResult(login,0);
+			}
 			break;
 		case R.id.btn_market_buydialog_confirm:
-			//TODO
-			if(accountService.buyCharacter("", "", clickedNo)){
-				Toast.makeText(MarketActivity.this, "Buy "+clickedName+" Succeed!", Toast.LENGTH_LONG).show();
-				//TODO nned to update our choice to character...
-			}else {
-				//buy failure i.e. user already has this character
-				
-			}
-			
+			buyCharacter();
+			dialog.dismiss();
 			break;
 		case R.id.btn_market_buydialog_cancel:
 			dialog.cancel();
@@ -240,30 +233,46 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 	
-
+	//network new thread.
 	private void buyCharacter() {
-		dismissPopupWindow();
-		
-		
-		//TODO checked if ther user has already has this character
-		if (isLogin) {
-			//buy character 
-			showBuyCharacterDialog();
-			
-		}else {
-			//ASK the user to login first....
-			////TODO show the list of character and coin user has...
-			
-		}
+		new Thread(){
+			@Override
+			public void run() {
+				super.run();
+				Message msg = Message.obtain();
+				try {
+					//checked if we already have this char?
+					if(account.getCharacters().contains(clickedNo)){
+						msg.what = BUY_CHARACTER_FAILURE_ALREADY_HAVE;						
+					}
+					//network buy
+					else if(accountService.buyCharacter(username,password, clickedNo)){
+						msg.what = BUY_CHARACTER_SUCCESS;
+						//update local account info. if succeed
+						account.setCoin(account.getCoin()-clickedCoin);
+						account.getCharacters().add(clickedNo);
+					}else {
+						msg.what = BUY_CHARACTER_FAILURE;
+					}
+				} catch (Exception e) {
+					msg.what = BUY_CHARACTER_FAILURE;
+				}
+				handler.sendMessage(msg);
+			}
+		}.start();		
 	}
 	
 	private void dlCharacter() {
-		dismissPopupWindow();
 		
 		//TODO
 		
 	}
-	
+	private void dismissPopupWindow() {
+		if (popupWindow != null && popupWindow.isShowing()) {
+			popupWindow.dismiss();
+			popupWindow = null;
+		}
+	}
 	void showBuyCharacterDialog(){
 		AlertDialog.Builder builder = new Builder(this);
 //		use inflator to inflate an alert dialog
@@ -291,28 +300,49 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	}
 	
 
-	private void uiUpdate(){
+	private void loadCharacters(){
 		new Thread(){
 			public void run() {
-				//" NO NEED TO LOGIN "
-				chars = (ArrayList<Character>) accountService.getCharacters();
+				Message msg = Message.obtain();
+				try {
+					chars = (ArrayList<Character>) accountService.getCharacters();
+					msg.what = LOAD_CHARACTERS_SUCCESS;
+				} catch (Exception e) {
+					msg.what = LOAD_CHARACTERS_FAILURE;
+				}
+				handler.sendMessage(msg);
+				
 				
 //				DEBUG ONLY
-//				accountService.addAccount(v)" NO NEED TO LOGIN "
-//				accountService.findByUsernameAndPassword(username, password);" NO NEED TO LOGIN "
+//				" NO NEED TO LOGIN "
+//				accountService.addAccount(new Account("dindin", "123", 123, new ArrayList<Integer>()));
+//				accountService.findByUsernameAndPassword("Andy1", "123");
 				
 				// the following services do not "NEED LOGIN "
-//				accountService.login("coursera", "changeit");ok
-//				accountService.addCoin("test2", "123", 21133);ok
+//				accountService.login("coursera", "changeit");
+//				accountService.addCoin("test2", "123", 21133);
 //				accountService.buyCharacter("test2", "123", 103);
 				
-				// told main thread loading is done
-				Message msg = Message.obtain();
-				msg.what = LOAD_APP_DONE;
-				handler.sendMessage(msg);
+
 			};
 		}.start();
 	}
+	
+	
+	private void loadUserData(){
+		new Thread(){
+			public void run() {
+				account = accountService.findByUsernameAndPassword(username, password).iterator().next();
+				Log.i(TAG, "load account info succedd");
+				Message msg = Message.obtain();
+				msg.what = LOAD_USER_DATA_DONE;
+				handler.sendMessage(msg);
+			};
+			
+		}.start();
+		
+	}
+	
 	
 	/**
 	 * the method handleMessage is called, once the loading of ArrayList is done
@@ -321,17 +351,35 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	private Handler handler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
-			case LOAD_APP_DONE:
+			case LOAD_CHARACTERS_SUCCESS:
 				ll_load.setVisibility(View.INVISIBLE);
 				lv_chars.setAdapter(new MarketAdapter());
 				break;
+			case LOAD_CHARACTERS_FAILURE:
+				Toast.makeText(MarketActivity.this, "Fail to connect to server!", Toast.LENGTH_SHORT).show();
+				break;					
 			case LOAD_ONE_PIC:
 				
-				
+				break;
+			case LOAD_USER_DATA_DONE:
+				tv_coin.setText("You have "+account.getCoin()+" coins.\n");
+				break;
+			case BUY_CHARACTER_SUCCESS:
+				tv_coin.setText("You have "+account.getCoin()+" coins.\n");
+				Toast.makeText(MarketActivity.this, "Buy "+clickedName+" Succeed!", Toast.LENGTH_SHORT).show();
+				break;
+			case BUY_CHARACTER_FAILURE:	
+				Toast.makeText(MarketActivity.this, "Fail to buy new character!", Toast.LENGTH_SHORT).show();
+				break;
+			case BUY_CHARACTER_FAILURE_ALREADY_HAVE:
+				Toast.makeText(MarketActivity.this, "You already have this character!", Toast.LENGTH_SHORT).show();
+				break;
 				
 			}
 		};
 	};
+	
+	
 	
 	private class MarketAdapter extends BaseAdapter{
 
@@ -411,6 +459,24 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 //		TextView tv_name;
 //		TextView tv_price;
 //	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == AtyLogin.LOGIN_SUCCEED) {
+			isLogin = true;
+			username = data.getStringExtra("username");
+			password = data.getStringExtra("password");
+			loadUserData();
+			Log.d(TAG, "market onactivity result login succeed.");
+			
+		}else if (resultCode == AtyLogin.LOGIN_FAIL) {
+			isLogin = false;
+			
+		}
+		
+	}
 	
 }
 

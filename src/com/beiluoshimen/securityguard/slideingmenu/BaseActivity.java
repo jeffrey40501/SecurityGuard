@@ -71,6 +71,13 @@ public class BaseActivity extends SlidingFragmentActivity {
 			System.out.println("@@@@@@@@@@@@");
 //			toggle();
 			startActivity(new Intent(this,AtySettings.class));
+			break;
+		case R.id.menu_main_author:
+			
+			
+			//TODO show author.
+			break;
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
