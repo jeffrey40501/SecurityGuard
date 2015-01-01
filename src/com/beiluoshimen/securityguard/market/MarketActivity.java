@@ -1,5 +1,7 @@
 package com.beiluoshimen.securityguard.market;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,11 +20,13 @@ import com.dk.animation.SwitchAnimationUtil.AnimationType;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -47,8 +51,15 @@ import android.widget.Toast;
  * @date 2014年11月23日下午9:51:48
  */
 public class MarketActivity extends BaseActivity implements OnClickListener{
-	//Spring 
-	private final static String TEST_URL = "https://192.168.200.100:8443";
+	//REMEMBER to change keystore in different IP.
+	//use the following command line's command to generate new keystore:
+//	keytool -genkey -alias tomcat -keyalg RSA -keystore <your_keystore_filename>
+	
+	//宿舍測試ip
+//	private final static String TEST_URL = "https://192.168.200.100:8443";
+	//家裡測試用ip
+	private final static String TEST_URL = "https://192.168.1.97:8443";
+	
 	
 //	private final String TEST_URL = "https://127.0.0.1:8443";
 //	private final String TEST_URL = "https://10.0.2.2:8443";
@@ -61,6 +72,11 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	.create(AccountSvcApi.class);
 	
 	
+    protected static DlSvcApi dlService = new RestAdapter.Builder()
+    .setClient(new ApacheClient(UnsafeHttpsClient.createUnsafeClient()))
+    .setEndpoint(TEST_URL).setLogLevel(LogLevel.NONE).build()
+    .create(DlSvcApi.class);
+    
 	
 	public MarketActivity(int titleRes) {
 		super(R.string.title_market);
@@ -81,6 +97,8 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	private static final int BUY_CHARACTER_SUCCESS = 5;
 	private static final int BUY_CHARACTER_FAILURE = 6;
 	private static final int BUY_CHARACTER_FAILURE_ALREADY_HAVE = 7;
+	private static final int DL_CHARACTER_FAILURE = 8;
+	private static final int DL_CHARACTER_SUCCESS = 9;
 	
 	
 	private TextView tv_coin;
@@ -213,7 +231,6 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 				startActivityForResult(login,0);
 			}else {
 				dismissPopupWindow();
-				//TODO show downloading...
 				dlCharacter();
 			}
 			break;
@@ -263,8 +280,59 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private void dlCharacter() {
+		new Thread(){
+			@Override
+			public void run() {
+				super.run();
+				Message msg = Message.obtain();
+				try {
+					DlData data;
+					if ( (data = dlService.dlCharacter(clickedNo)) !=null) {
+						Log.d(TAG, "Download Success.");
+						Log.d(TAG, "Download Success.");
+						Log.d(TAG, "Download Success.");
+						Log.d(TAG, "Download Success.");
+						Log.d(TAG, "Download Success.");
+						Log.d(TAG, "Download Success.");
+
+						//getDLData ....
+						System.out.println(data.getZipData());
+						System.out.println(data.getZipData());
+						System.out.println(data.getZipData());
+						System.out.println(data.getZipData());
+//						
+//						File sdCard = Environment.getExternalStorageDirectory();
+//						File dir = new File (sdCard.getAbsolutePath() + "/SecurityGuard/dl");
+//						dir.mkdirs();
+//						File file = new File(dir, "100.zip");
+//						FileOutputStream f = getApplicationContext().openFileOutput("123.zip",Context.MODE_PRIVATE);
+//						f.write(data.getZipData());
+//						f.flush();
+//						f.close();
+						
+						msg.what = DL_CHARACTER_SUCCESS;
+					}else {
+						//server return null, this character doesn't exist.
+						msg.what = DL_CHARACTER_FAILURE;
+						Log.d(TAG, "Download Failure.");
+						Log.d(TAG, "Download Failure.");
+						Log.d(TAG, "Download Failure.");
+						Log.d(TAG, "Download Failure.");
+						Log.d(TAG, "Download Failure.");
+					}
+				} catch (Exception e) {
+					//newtwork error
+					e.printStackTrace();
+					msg.what = DL_CHARACTER_FAILURE;
+					Log.d(TAG, "Download exception.");
+					Log.d(TAG, "Download exception.");
+					Log.d(TAG, "Download exception.");
+					Log.d(TAG, "Download exception.");
+				}
+				handler.sendMessage(msg);
+			}
+		}.start();
 		
-		//TODO
 		
 	}
 	private void dismissPopupWindow() {
@@ -374,7 +442,12 @@ public class MarketActivity extends BaseActivity implements OnClickListener{
 			case BUY_CHARACTER_FAILURE_ALREADY_HAVE:
 				Toast.makeText(MarketActivity.this, "You already have this character!", Toast.LENGTH_SHORT).show();
 				break;
-				
+			case DL_CHARACTER_SUCCESS:
+				Toast.makeText(MarketActivity.this, "Successfullly dl character!", Toast.LENGTH_SHORT).show();
+				break;
+			case DL_CHARACTER_FAILURE:
+				Toast.makeText(MarketActivity.this, "Fail to dl character!", Toast.LENGTH_SHORT).show();
+				break;				
 			}
 		};
 	};

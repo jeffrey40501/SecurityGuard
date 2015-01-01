@@ -135,6 +135,21 @@
         </provider>
         <service android:name=".lock.LockService"></service>
         <service android:name=".moe.CleanService"></service>
+        
+         <service
+		    android:name="com.beiluoshimen.securityguard.moewallpaper.LiveWallpaperService"
+		    android:label="wallpaper"
+		    android:permission="android.permission.BIND_WALLPAPER" >
+		    <intent-filter>
+		        <action android:name="android.service.wallpaper.WallpaperService" />
+		    </intent-filter>
+		
+		    <meta-data
+		        android:name="android.service.wallpaper"
+		        android:resource="@xml/wallpaper" />
+		</service>
+		
+         
     </application>
 
 </manifest>

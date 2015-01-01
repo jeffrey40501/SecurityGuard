@@ -1662,6 +1662,7 @@ containing a value of this type.
     }
     public static final class xml {
         public static final int admin=0x7f050000;
+        public static final int wallpaper=0x7f050001;
     }
     public static final class styleable {
         /**  Attributes used to style the Action Bar. 

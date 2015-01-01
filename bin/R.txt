@@ -952,3 +952,4 @@ int styleable sexangleImageView_home 3
 int styleable sexangleImageView_textSize 1
 int styleable sexangleImageView_texts 4
 int xml admin 0x7f050000
+int xml wallpaper 0x7f050001
